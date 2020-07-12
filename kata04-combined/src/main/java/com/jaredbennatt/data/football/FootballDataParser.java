@@ -33,15 +33,15 @@ public class FootballDataParser extends DataParser {
 		final Record record = new Record(LABELS.size());
 
 		// go through and add each value
-		record.addDatum("Rank", new Field.IntegerField());
-		record.addDatum(TEAM_LABEL, new Field.StringField());
-		record.addDatum("P", new Field.IntegerField());
-		record.addDatum("W", new Field.IntegerField());
-		record.addDatum("L", new Field.IntegerField());
-		record.addDatum("D", new Field.IntegerField());
-		record.addDatum(GOALS_FOR_LABEL, new Field.DoubleField());
-		record.addDatum(GOALS_AGAINST_LABEL, new Field.IntegerField());
-		record.addDatum("Pts", new Field.IntegerField());
+		record.addField("Rank", new Field.IntegerField());
+		record.addField(TEAM_LABEL, new Field.StringField());
+		record.addField("P", new Field.IntegerField());
+		record.addField("W", new Field.IntegerField());
+		record.addField("L", new Field.IntegerField());
+		record.addField("D", new Field.IntegerField());
+		record.addField(GOALS_FOR_LABEL, new Field.DoubleField());
+		record.addField(GOALS_AGAINST_LABEL, new Field.IntegerField());
+		record.addField("Pts", new Field.IntegerField());
 
 		return record;
 	}

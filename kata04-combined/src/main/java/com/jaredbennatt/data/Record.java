@@ -10,8 +10,8 @@ public class Record {
 		this.fields = new HashMap<>(size);
 	}
 
-	public void addDatum(final String label, final Field datum) {
-		fields.put(label, datum);
+	public void addField(final String label, final Field field) {
+		fields.put(label, field);
 	}
 
 	public Field getField(final String label) {

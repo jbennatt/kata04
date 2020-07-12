@@ -39,22 +39,22 @@ public class WeatherDataParser extends DataParser {
 		final Record record = new Record(LABELS.size());
 
 		// go through and add each value
-		record.addDatum(DAY_LABEL, new Field.IntegerField());
-		record.addDatum(MAX_TEMP_LABEL, new Field.IntegerField());
-		record.addDatum(MIN_TEMP_LABEL, new Field.IntegerField());
-		record.addDatum("AvT", new Field.IntegerField());
-		record.addDatum("HDDay", new Field.IntegerField());
-		record.addDatum("AvDP", new Field.DoubleField());
-		record.addDatum("TPcpn", new Field.DoubleField());
-		record.addDatum("WxType", new Field.StringField());
-		record.addDatum("PDir", new Field.IntegerField());
-		record.addDatum("AvSp", new Field.DoubleField());
-		record.addDatum("Dir", new Field.IntegerField());
-		record.addDatum("MxS", new Field.IntegerField());
-		record.addDatum("SkyC", new Field.DoubleField());
-		record.addDatum("MxR", new Field.IntegerField());
-		record.addDatum("MnR", new Field.IntegerField());
-		record.addDatum("AvSLP", new Field.DoubleField());
+		record.addField(DAY_LABEL, new Field.IntegerField());
+		record.addField(MAX_TEMP_LABEL, new Field.IntegerField());
+		record.addField(MIN_TEMP_LABEL, new Field.IntegerField());
+		record.addField("AvT", new Field.IntegerField());
+		record.addField("HDDay", new Field.IntegerField());
+		record.addField("AvDP", new Field.DoubleField());
+		record.addField("TPcpn", new Field.DoubleField());
+		record.addField("WxType", new Field.StringField());
+		record.addField("PDir", new Field.IntegerField());
+		record.addField("AvSp", new Field.DoubleField());
+		record.addField("Dir", new Field.IntegerField());
+		record.addField("MxS", new Field.IntegerField());
+		record.addField("SkyC", new Field.DoubleField());
+		record.addField("MxR", new Field.IntegerField());
+		record.addField("MnR", new Field.IntegerField());
+		record.addField("AvSLP", new Field.DoubleField());
 
 		return record;
 	}
