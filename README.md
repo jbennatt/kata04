@@ -32,6 +32,6 @@ java -jar ${path_to}/kata04-football.jar < ${path_to}/football.dat
 
 /kata04-combined
 
-This Project has two executables and maven will create both and they are names 
+This Project has two executables and maven will create both and they are named 
 the same as the above two (except they will be located in the target directory 
 of this project).
