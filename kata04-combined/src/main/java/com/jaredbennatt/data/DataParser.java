@@ -11,9 +11,9 @@ public abstract class DataParser {
 	}
 
 	/**
-	 * Returns the expected number of recrods for this data
+	 * Returns the expected number of records for this data
 	 * 
-	 * @return the number of recrods expected for this data
+	 * @return the number of records expected for this data
 	 */
 	public abstract int getPreferredTableSize();
 
@@ -35,7 +35,7 @@ public abstract class DataParser {
 	 * returned
 	 * 
 	 * @return The list of labels that can be traversed in order to retrieve the
-	 *         datums in the Record object in a specific order.
+	 *         fields in the Record object in a specific order.
 	 */
 	protected abstract List<String> getLabels();
 

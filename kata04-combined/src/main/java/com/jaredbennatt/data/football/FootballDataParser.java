@@ -14,7 +14,7 @@ import com.jaredbennatt.data.fields.StringField;
 
 public class FootballDataParser extends DataParser {
 	// delimiting pattern for parsing data, this will remove all white space,
-	// periods, and hyphens. The or pattern allows these to come in any order and
+	// periods, and hyphens. The "or pattern" allows these to come in any order and
 	// any number of times (but at least once).
 	private static final Pattern DELIMITER_PATTERN = Pattern.compile("(\\s|\\.|-)+");
 

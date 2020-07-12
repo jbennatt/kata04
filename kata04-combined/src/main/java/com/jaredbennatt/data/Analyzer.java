@@ -4,14 +4,6 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * This implementation of compareTo should accept null values and any non-value
- * null value should be "greater than" a null value (if both are null, it should
- * be less than--to imply inequality).
- * 
- * @author Jared F Bennatt
- *
- */
 public interface Analyzer<T> {
 
 	/**
@@ -19,23 +11,25 @@ public interface Analyzer<T> {
 	 * same as compare() in a Comparator, except a null value will always be "less
 	 * than" any other value (including null itself).
 	 * 
-	 * This effectively does the comparison t1 >=? t2.
+	 * This effectively does the comparison t1 >=? t2, where being greater is the
+	 * preferred value.
 	 * 
 	 * @param t1 The value to the left of the comparison
 	 * @param t2 The value to the right of the comparison
 	 * @return 0 if the two are equal, positive if t1 > t2, and negative if t1 < t2.
 	 *         If t2 is null, this should return positive <em>unless</em> t1 is
 	 *         <em>also</em> null, in which case it should return a negative.
-	 *         Simarly, if t1 is null, this should always return negative.
+	 *         Similarly, if t1 is null, this should always return negative.
 	 */
 	public int compareMeasure(final T t1, final T t2);
 
 	/**
-	 * Returns a Measure object from this record which can then be compared to other
-	 * Measure objects.
+	 * Returns an object representing the measure from this record which can then be
+	 * compared to other objects of the same generic type in the compareMeasure(...)
+	 * method.
 	 * 
 	 * @param record The Record to be measured
-	 * @return Measure object representing some value for this record.
+	 * @return An Object representing some value for this record.
 	 */
 	public T measure(final Record record);
 
@@ -44,7 +38,7 @@ public interface Analyzer<T> {
 	 * 
 	 * @param record Record object to be printed.
 	 * @return the String containing the message (e.g. "The Yankees had the most
-	 *         wins with 88").
+	 *         wins with 88 games won").
 	 */
 	public String printBestRecord(final Record record);
 

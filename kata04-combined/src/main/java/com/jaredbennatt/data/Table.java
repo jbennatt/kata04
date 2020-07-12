@@ -32,8 +32,11 @@ public class Table implements Iterable<Record> {
 		final Table table = new Table(parser.getPreferredTableSize());
 
 		try (final Scanner scanner = new Scanner(input)) {
+			// read all lines of input
 			while (scanner.hasNextLine()) {
 				final Record record = parser.parseLine(scanner.nextLine());
+
+				// if the line is successfully parsed, add it to the table
 				if (record != null) {
 					table.records.add(record);
 				}
