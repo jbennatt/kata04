@@ -17,9 +17,9 @@ public interface Analyzer<T> {
 	 * @param t1 The value to the left of the comparison
 	 * @param t2 The value to the right of the comparison
 	 * @return 0 if the two are equal, positive if t1 > t2, and negative if t1 < t2.
-	 *         If t2 is null, this should return positive <em>unless</em> t1 is
-	 *         <em>also</em> null, in which case it should return a negative.
-	 *         Similarly, if t1 is null, this should always return negative.
+	 *         If t1 is null, this should always return negative (we never want to
+	 *         "accept" a null value), otherwise if t2 is null (and t1 is not), this
+	 *         should return positive.
 	 */
 	public int compareMeasure(final T t1, final T t2);
 
