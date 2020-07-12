@@ -14,8 +14,9 @@ inside each directory. This
 will create .jar files inside the target directory which can be run by calling
 java -jar kata04-weather.jar (for example).
 
-All three main methods read from standard in, so the best way to run the
-programs are from the command line:
+All four main methods read from standard in, so the best way to run the
+programs are from the command line and redirect stdin to the .dat files. Here
+are examples for unix-like systems:
 
 /kata04-weather
 
