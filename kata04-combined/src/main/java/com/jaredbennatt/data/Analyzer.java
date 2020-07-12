@@ -1,7 +1,7 @@
 package com.jaredbennatt.data;
 
 import java.io.InputStream;
-
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,6 +60,11 @@ public interface Analyzer<T> {
 	public String printBestRecord(final Record record);
 
 	public static <T> void analyze(final Table table, final Analyzer<T> analyzer) {
+		if (table.isEmpty()) {
+			System.out.println("No records found for this data.");
+			return;
+		}
+
 		// keep list of best records
 		final List<Record> bestRecords = new LinkedList<>();
 		T bestMeasure = null;
@@ -81,20 +86,19 @@ public interface Analyzer<T> {
 			}
 		}
 
-		if (bestRecords.isEmpty()) {
-			System.out.println("No records were found to be compared.");
-		} else {
-
-			for (final Record record : bestRecords) {
-				System.out.println(analyzer.printBestRecord(record));
-			}
+		for (final Record record : bestRecords) {
+			System.out.println(analyzer.printBestRecord(record));
 		}
 	}
 
 	public static <T> void analyze(final InputStream input, final DataParser parser, final Analyzer<T> analyzer) {
-		final Table table = parser.readInTable(input);
+		try {
+			final Table table = parser.readInTable(input);
 
-		Analyzer.analyze(table, analyzer);
+			Analyzer.analyze(table, analyzer);
+		} catch (final ParseException pe) {
+			System.out.println("On line " + pe.getErrorOffset() + ": " + pe.getMessage());
+		}
 	}
 
 }

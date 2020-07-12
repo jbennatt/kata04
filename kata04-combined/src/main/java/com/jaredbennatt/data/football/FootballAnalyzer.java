@@ -23,18 +23,11 @@ public class FootballAnalyzer implements Analyzer<Integer> {
 
 	@Override
 	public Integer measure(Record record) {
-		try {
-			final int goalsFor = Integer.parseInt(record.getField(FootballDataParser.GOALS_FOR_LABEL).getValue());
-			final int goalsAgainst = Integer
-					.parseInt(record.getField(FootballDataParser.GOALS_AGAINST_LABEL).getValue());
+		// find the goals for and against, then subtract and take the absolute value
+		final int goalsFor = Integer.parseInt(record.getField(FootballDataParser.GOALS_FOR_LABEL).getValue());
+		final int goalsAgainst = Integer.parseInt(record.getField(FootballDataParser.GOALS_AGAINST_LABEL).getValue());
 
-			return (int) Math.abs(goalsFor - goalsAgainst);
-		} catch (final NumberFormatException nfe) {
-			// the only way for a number format exception to occur is if one (or both) of
-			// the fields are null, so return null for the measure (meaning the measurement
-			// wasn't possible)
-			return null;
-		}
+		return (int) Math.abs(goalsFor - goalsAgainst);
 	}
 
 	@Override

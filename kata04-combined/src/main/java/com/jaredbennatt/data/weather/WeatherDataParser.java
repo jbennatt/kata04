@@ -34,23 +34,23 @@ public class WeatherDataParser extends DataParser {
 		// else this line contains data, so generate a weather record
 		final Record record = new Record(LABELS.size());
 
-		// go through and add each value
-		record.addField(DAY_LABEL, new Field.IntegerField());
-		record.addField(MAX_TEMP_LABEL, new Field.IntegerField());
-		record.addField(MIN_TEMP_LABEL, new Field.IntegerField());
-		record.addField("AvT", new Field.IntegerField());
-		record.addField("HDDay", new Field.IntegerField());
-		record.addField("AvDP", new Field.DoubleField());
-		record.addField("TPcpn", new Field.DoubleField());
-		record.addField("WxType", new Field.StringField());
-		record.addField("PDir", new Field.IntegerField());
-		record.addField("AvSp", new Field.DoubleField());
-		record.addField("Dir", new Field.IntegerField());
-		record.addField("MxS", new Field.IntegerField());
-		record.addField("SkyC", new Field.DoubleField());
-		record.addField("MxR", new Field.IntegerField());
-		record.addField("MnR", new Field.IntegerField());
-		record.addField("AvSLP", new Field.DoubleField());
+		// go through and add each value only day, max, and min temp are required fields
+		record.addField(DAY_LABEL, new Field.IntegerField(true));
+		record.addField(MAX_TEMP_LABEL, new Field.IntegerField(true));
+		record.addField(MIN_TEMP_LABEL, new Field.IntegerField(true));
+		record.addField("AvT", new Field.IntegerField(false));
+		record.addField("HDDay", new Field.IntegerField(false));
+		record.addField("AvDP", new Field.DoubleField(false));
+		record.addField("TPcpn", new Field.DoubleField(false));
+		record.addField("WxType", new Field.StringField(false));
+		record.addField("PDir", new Field.IntegerField(false));
+		record.addField("AvSp", new Field.DoubleField(false));
+		record.addField("Dir", new Field.IntegerField(false));
+		record.addField("MxS", new Field.IntegerField(false));
+		record.addField("SkyC", new Field.DoubleField(false));
+		record.addField("MxR", new Field.IntegerField(false));
+		record.addField("MnR", new Field.IntegerField(false));
+		record.addField("AvSLP", new Field.DoubleField(false));
 
 		return record;
 	}

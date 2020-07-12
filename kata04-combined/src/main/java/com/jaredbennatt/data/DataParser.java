@@ -1,6 +1,7 @@
 package com.jaredbennatt.data;
 
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -58,7 +59,7 @@ public abstract class DataParser {
 	 * @return Returns this line of data as a Record or null if this line does not
 	 *         represent data.
 	 */
-	private Record parseLine(String line) {
+	private Record parseLine(final String line, final int lineNo) throws ParseException {
 		try (final Scanner scanner = new Scanner(line)) {
 			scanner.useDelimiter(getDelimiter());
 			final Record record = generateNewRecord(scanner);
@@ -72,6 +73,9 @@ public abstract class DataParser {
 			for (final String label : getLabels()) {
 				final Field field = record.getField(label);
 				field.readData(scanner);
+				if (field.isRequired() && field.isNull()) {
+					throw new ParseException(label + " is a required field but is missing.", lineNo);
+				}
 			}
 
 			return record;
@@ -84,13 +88,15 @@ public abstract class DataParser {
 	 * @param input InputStream, each line is assumed to represent a record.
 	 * @return The Table object representing the data in this input stream.
 	 */
-	public Table readInTable(final InputStream input) {
+	public Table readInTable(final InputStream input) throws ParseException {
 		final Table table = new Table(this.getPreferredTableSize());
 
 		try (final Scanner scanner = new Scanner(input)) {
+			int line = 0;
 			// read all lines of input
 			while (scanner.hasNextLine()) {
-				final Record record = this.parseLine(scanner.nextLine());
+				++line;
+				final Record record = this.parseLine(scanner.nextLine(), line);
 
 				// if the line is successfully parsed, add it to the table
 				if (record != null) {

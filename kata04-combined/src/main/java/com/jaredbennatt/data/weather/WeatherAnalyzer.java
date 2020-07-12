@@ -22,18 +22,11 @@ public class WeatherAnalyzer implements Analyzer<Integer> {
 
 	@Override
 	public Integer measure(Record record) {
-		try {
-			// find the max and min temperature then subtract
-			final int maxTemp = Integer.parseInt(record.getField(WeatherDataParser.MAX_TEMP_LABEL).getValue());
-			final int minTemp = Integer.parseInt(record.getField(WeatherDataParser.MIN_TEMP_LABEL).getValue());
+		// find the max and min temperature then subtract
+		final int maxTemp = Integer.parseInt(record.getField(WeatherDataParser.MAX_TEMP_LABEL).getValue());
+		final int minTemp = Integer.parseInt(record.getField(WeatherDataParser.MIN_TEMP_LABEL).getValue());
 
-			return maxTemp - minTemp;
-		} catch (final NumberFormatException nfe) {
-			// the only way for a number format exception to occur is if one (or both) of
-			// the fields are null, so return null for the measure (meaning the measurement
-			// wasn't possible)
-			return null;
-		}
+		return maxTemp - minTemp;
 	}
 
 	@Override

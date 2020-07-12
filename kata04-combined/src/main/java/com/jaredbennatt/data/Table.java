@@ -21,4 +21,8 @@ public class Table implements Iterable<Record> {
 	public void addRecord(final Record record) {
 		this.records.add(record);
 	}
+
+	public boolean isEmpty() {
+		return records.isEmpty();
+	}
 }

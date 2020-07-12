@@ -5,6 +5,11 @@ import java.util.Scanner;
 public abstract class Field {
 
 	public static class DoubleField extends Field {
+
+		public DoubleField(final boolean required) {
+			super(required);
+		}
+
 		@Override
 		public void readData(Scanner scanner) {
 			if (scanner.hasNextDouble()) {
@@ -14,6 +19,11 @@ public abstract class Field {
 	}
 
 	public static class IntegerField extends Field {
+
+		public IntegerField(final boolean required) {
+			super(required);
+		}
+
 		@Override
 		public void readData(final Scanner scanner) {
 			if (scanner.hasNextInt()) {
@@ -23,6 +33,11 @@ public abstract class Field {
 	}
 
 	public static class NameField extends Field {
+
+		public NameField(final boolean required) {
+			super(required);
+		}
+
 		@Override
 		public void readData(final Scanner scanner) {
 			if (scanner.hasNext() && !scanner.hasNextDouble()) {
@@ -37,6 +52,11 @@ public abstract class Field {
 	}
 
 	public static class StringField extends Field {
+
+		public StringField(final boolean required) {
+			super(required);
+		}
+
 		@Override
 		public void readData(final Scanner scanner) {
 			if (scanner.hasNext() && !scanner.hasNextDouble()) {
@@ -46,6 +66,11 @@ public abstract class Field {
 	}
 
 	private String value;
+	private final boolean required;
+
+	protected Field(final boolean required) {
+		this.required = required;
+	}
 
 	public String getValue() {
 		return value;
@@ -53,6 +78,14 @@ public abstract class Field {
 
 	public void setValue(final String value) {
 		this.value = value;
+	}
+
+	public boolean isRequired() {
+		return required;
+	}
+
+	public boolean isNull() {
+		return value == null;
 	}
 
 	/**

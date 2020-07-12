@@ -32,16 +32,16 @@ public class FootballDataParser extends DataParser {
 		// else this line contains data, so generate a weather record
 		final Record record = new Record(LABELS.size());
 
-		// go through and add each value
-		record.addField("Rank", new Field.IntegerField());
-		record.addField(TEAM_LABEL, new Field.StringField());
-		record.addField("P", new Field.IntegerField());
-		record.addField("W", new Field.IntegerField());
-		record.addField("L", new Field.IntegerField());
-		record.addField("D", new Field.IntegerField());
-		record.addField(GOALS_FOR_LABEL, new Field.DoubleField());
-		record.addField(GOALS_AGAINST_LABEL, new Field.IntegerField());
-		record.addField("Pts", new Field.IntegerField());
+		// go through and add each value (all fields are required)
+		record.addField("Rank", new Field.IntegerField(true));
+		record.addField(TEAM_LABEL, new Field.StringField(true));
+		record.addField("P", new Field.IntegerField(true));
+		record.addField("W", new Field.IntegerField(true));
+		record.addField("L", new Field.IntegerField(true));
+		record.addField("D", new Field.IntegerField(true));
+		record.addField(GOALS_FOR_LABEL, new Field.DoubleField(true));
+		record.addField(GOALS_AGAINST_LABEL, new Field.IntegerField(true));
+		record.addField("Pts", new Field.IntegerField(true));
 
 		return record;
 	}
