@@ -1,16 +1,15 @@
 package com.jaredbennatt.data.football;
 
 import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import com.jaredbennatt.data.DataParser;
+import com.jaredbennatt.data.Field;
 import com.jaredbennatt.data.Record;
-import com.jaredbennatt.data.fields.DoubleField;
-import com.jaredbennatt.data.fields.IntegerField;
-import com.jaredbennatt.data.fields.StringField;
 
 public class FootballDataParser extends DataParser {
 	// delimiting pattern for parsing data, this will remove all white space,
@@ -34,15 +33,15 @@ public class FootballDataParser extends DataParser {
 		final Record record = new Record(LABELS.size());
 
 		// go through and add each value
-		record.addDatum("Rank", new IntegerField());
-		record.addDatum(TEAM_LABEL, new StringField());
-		record.addDatum("P", new IntegerField());
-		record.addDatum("W", new IntegerField());
-		record.addDatum("L", new IntegerField());
-		record.addDatum("D", new IntegerField());
-		record.addDatum(GOALS_FOR_LABEL, new DoubleField());
-		record.addDatum(GOALS_AGAINST_LABEL, new IntegerField());
-		record.addDatum("Pts", new IntegerField());
+		record.addDatum("Rank", new Field.IntegerField());
+		record.addDatum(TEAM_LABEL, new Field.StringField());
+		record.addDatum("P", new Field.IntegerField());
+		record.addDatum("W", new Field.IntegerField());
+		record.addDatum("L", new Field.IntegerField());
+		record.addDatum("D", new Field.IntegerField());
+		record.addDatum(GOALS_FOR_LABEL, new Field.DoubleField());
+		record.addDatum(GOALS_AGAINST_LABEL, new Field.IntegerField());
+		record.addDatum("Pts", new Field.IntegerField());
 
 		return record;
 	}

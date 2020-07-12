@@ -1,16 +1,15 @@
 package com.jaredbennatt.data.weather;
 
 import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import com.jaredbennatt.data.DataParser;
+import com.jaredbennatt.data.Field;
 import com.jaredbennatt.data.Record;
-import com.jaredbennatt.data.fields.DoubleField;
-import com.jaredbennatt.data.fields.IntegerField;
-import com.jaredbennatt.data.fields.StringField;
 
 public class WeatherDataParser extends DataParser {
 	// for this delimiter I'm taking out the asterisks up front
@@ -40,22 +39,22 @@ public class WeatherDataParser extends DataParser {
 		final Record record = new Record(LABELS.size());
 
 		// go through and add each value
-		record.addDatum(DAY_LABEL, new IntegerField());
-		record.addDatum(MAX_TEMP_LABEL, new IntegerField());
-		record.addDatum(MIN_TEMP_LABEL, new IntegerField());
-		record.addDatum("AvT", new IntegerField());
-		record.addDatum("HDDay", new IntegerField());
-		record.addDatum("AvDP", new DoubleField());
-		record.addDatum("TPcpn", new DoubleField());
-		record.addDatum("WxType", new StringField());
-		record.addDatum("PDir", new IntegerField());
-		record.addDatum("AvSp", new DoubleField());
-		record.addDatum("Dir", new IntegerField());
-		record.addDatum("MxS", new IntegerField());
-		record.addDatum("SkyC", new DoubleField());
-		record.addDatum("MxR", new IntegerField());
-		record.addDatum("MnR", new IntegerField());
-		record.addDatum("AvSLP", new DoubleField());
+		record.addDatum(DAY_LABEL, new Field.IntegerField());
+		record.addDatum(MAX_TEMP_LABEL, new Field.IntegerField());
+		record.addDatum(MIN_TEMP_LABEL, new Field.IntegerField());
+		record.addDatum("AvT", new Field.IntegerField());
+		record.addDatum("HDDay", new Field.IntegerField());
+		record.addDatum("AvDP", new Field.DoubleField());
+		record.addDatum("TPcpn", new Field.DoubleField());
+		record.addDatum("WxType", new Field.StringField());
+		record.addDatum("PDir", new Field.IntegerField());
+		record.addDatum("AvSp", new Field.DoubleField());
+		record.addDatum("Dir", new Field.IntegerField());
+		record.addDatum("MxS", new Field.IntegerField());
+		record.addDatum("SkyC", new Field.DoubleField());
+		record.addDatum("MxR", new Field.IntegerField());
+		record.addDatum("MnR", new Field.IntegerField());
+		record.addDatum("AvSLP", new Field.DoubleField());
 
 		return record;
 	}

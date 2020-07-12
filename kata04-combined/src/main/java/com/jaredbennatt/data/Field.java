@@ -3,6 +3,48 @@ package com.jaredbennatt.data;
 import java.util.Scanner;
 
 public abstract class Field {
+
+	public static class DoubleField extends Field {
+		@Override
+		public void readData(Scanner scanner) {
+			if (scanner.hasNextDouble()) {
+				this.setValue(scanner.next());
+			}
+		}
+	}
+
+	public static class IntegerField extends Field {
+		@Override
+		public void readData(final Scanner scanner) {
+			if (scanner.hasNextInt()) {
+				this.setValue(scanner.next());
+			}
+		}
+	}
+
+	public static class NameField extends Field {
+		@Override
+		public void readData(final Scanner scanner) {
+			if (scanner.hasNext() && !scanner.hasNextDouble()) {
+				String name = scanner.next();
+				while (scanner.hasNext() && !scanner.hasNextDouble()) {
+					name += " " + scanner.next();
+				}
+
+				this.setValue(name);
+			}
+		}
+	}
+
+	public static class StringField extends Field {
+		@Override
+		public void readData(final Scanner scanner) {
+			if (scanner.hasNext() && !scanner.hasNextDouble()) {
+				this.setValue(scanner.next());
+			}
+		}
+	}
+
 	private String value;
 
 	public String getValue() {
