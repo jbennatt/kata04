@@ -1,7 +1,6 @@
 package com.jaredbennatt.weather_data;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class WeatherDataDay {
 	private final int day;
