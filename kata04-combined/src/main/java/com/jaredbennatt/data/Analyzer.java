@@ -70,7 +70,7 @@ public interface Analyzer<T> {
 	}
 
 	public static <T> void analyze(final InputStream input, final DataParser parser, final Analyzer<T> analyzer) {
-		final Table table = Table.readTable(input, parser);
+		final Table table = parser.readInTable(input);
 
 		Analyzer.analyze(table, analyzer);
 	}

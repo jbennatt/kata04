@@ -1,5 +1,6 @@
 package com.jaredbennatt.data;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -75,6 +76,30 @@ public abstract class DataParser {
 
 			return record;
 		}
+	}
+
+	/**
+	 * Reads a table of records into a Table object from input.
+	 * 
+	 * @param input InputStream, each line is assumed to represent a record.
+	 * @return The Table object representing the data in this input stream.
+	 */
+	public Table readInTable(final InputStream input) {
+		final Table table = new Table(this.getPreferredTableSize());
+
+		try (final Scanner scanner = new Scanner(input)) {
+			// read all lines of input
+			while (scanner.hasNextLine()) {
+				final Record record = this.parseLine(scanner.nextLine());
+
+				// if the line is successfully parsed, add it to the table
+				if (record != null) {
+					table.addRecord(record);
+				}
+			}
+		}
+
+		return table;
 	}
 
 }
