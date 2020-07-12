@@ -31,3 +31,7 @@ target/
 /.metadata/
 bin/
 doc/
+
+#latex files
+*.aux
+*.gz
