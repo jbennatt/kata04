@@ -58,7 +58,7 @@ public abstract class DataParser {
 	 * @return Returns this line of data as a Record or null if this line does not
 	 *         represent data.
 	 */
-	public Record parseLine(String line) {
+	private Record parseLine(String line) {
 		try (final Scanner scanner = new Scanner(line)) {
 			scanner.useDelimiter(getDelimiter());
 			final Record record = generateNewRecord(scanner);
