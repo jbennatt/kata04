@@ -15,10 +15,6 @@ public class WeatherDataParser extends DataParser {
 	// for this delimiter I'm taking out the asterisks up front
 	private static final Pattern DELIMITER_PATTERN = Pattern.compile("(\\s|\\*)+");
 
-	public WeatherDataParser() {
-		super();
-	}
-
 	@Override
 	public Pattern getDelimiter() {
 		return DELIMITER_PATTERN;

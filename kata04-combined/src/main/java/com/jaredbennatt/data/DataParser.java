@@ -11,10 +11,6 @@ public abstract class DataParser {
 	 */
 	private static final Pattern DEFAULT_DELIMITER = Pattern.compile("\\s+");
 
-	protected DataParser() {
-		super();
-	}
-
 	/**
 	 * Returns the expected number of records for this data
 	 * 

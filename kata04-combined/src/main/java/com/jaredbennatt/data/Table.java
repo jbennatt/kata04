@@ -10,7 +10,7 @@ public class Table implements Iterable<Record> {
 
 	public Table(final int size) {
 		super();
-		this.records = new ArrayList<Record>(size);
+		this.records = new ArrayList<>(size);
 	}
 
 	@Override
