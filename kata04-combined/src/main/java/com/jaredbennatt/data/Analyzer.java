@@ -1,6 +1,7 @@
 package com.jaredbennatt.data;
 
 import java.io.InputStream;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,14 +15,30 @@ public interface Analyzer<T> {
 	 * This effectively does the comparison t1 >=? t2, where being greater is the
 	 * preferred value.
 	 * 
+	 * This method <em>should</em> be overriden, however the default implementation
+	 * can be used to handle null cases. If the default method returns 0, then
+	 * neither arguments are null.
+	 * 
 	 * @param t1 The value to the left of the comparison
 	 * @param t2 The value to the right of the comparison
 	 * @return 0 if the two are equal, positive if t1 > t2, and negative if t1 < t2.
 	 *         If t1 is null, this should always return negative (we never want to
 	 *         "accept" a null value), otherwise if t2 is null (and t1 is not), this
 	 *         should return positive.
+	 * 
+	 *         The default method only handles null values, if the default method
+	 *         returns 0, then neither argument is null.
 	 */
-	public int compareMeasure(final T t1, final T t2);
+	public default int compareMeasure(final T t1, final T t2) {
+		if (t1 == null) {
+			return -1;
+		} else if (t2 == null) {
+			return 1;
+		}
+
+		// else return 0, signaling neither t1 nor t2 are null
+		return 0;
+	}
 
 	/**
 	 * Returns an object representing the measure from this record which can then be
@@ -64,8 +81,13 @@ public interface Analyzer<T> {
 			}
 		}
 
-		for (final Record record : bestRecords) {
-			System.out.println(analyzer.printBestRecord(record));
+		if (bestRecords.isEmpty()) {
+			System.out.println("No records were found to be compared.");
+		} else {
+
+			for (final Record record : bestRecords) {
+				System.out.println(analyzer.printBestRecord(record));
+			}
 		}
 	}
 

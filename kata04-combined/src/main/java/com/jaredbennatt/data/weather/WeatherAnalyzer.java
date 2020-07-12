@@ -7,25 +7,33 @@ public class WeatherAnalyzer implements Analyzer<Integer> {
 
 	@Override
 	public int compareMeasure(Integer maxDiff1, Integer maxDiff2) {
-		// if maxDiff1 is null, it less than anything (even another null value)
-		if (maxDiff1 == null) {
-			return -1;
-		} else if (maxDiff2 == null) { // means maxDiff1 is non-null, so it is greater than a null value
-			return 1;
-		} else {
-			// neither are null, just compare them as normal, I want the maximum which is
-			// what this gives me (a positive indicates greater than).
-			return Integer.compare(maxDiff1, maxDiff2);
+		// call default compareMeasure to handle null values
+		final int cmp = Analyzer.super.compareMeasure(maxDiff1, maxDiff2);
+
+		// one (or both) arguments are null and the default method can handle that
+		if (cmp != 0) {
+			return cmp;
 		}
+
+		// neither are null, just compare them as normal, I want the maximum which is
+		// what this gives me (a positive indicates greater than).
+		return Integer.compare(maxDiff1, maxDiff2);
 	}
 
 	@Override
 	public Integer measure(Record record) {
-		// find the max and min temperature then subtract
-		final int maxTemp = Integer.parseInt(record.getField(WeatherDataParser.MAX_TEMP_LABEL).getValue());
-		final int minTemp = Integer.parseInt(record.getField(WeatherDataParser.MIN_TEMP_LABEL).getValue());
+		try {
+			// find the max and min temperature then subtract
+			final int maxTemp = Integer.parseInt(record.getField(WeatherDataParser.MAX_TEMP_LABEL).getValue());
+			final int minTemp = Integer.parseInt(record.getField(WeatherDataParser.MIN_TEMP_LABEL).getValue());
 
-		return maxTemp - minTemp;
+			return maxTemp - minTemp;
+		} catch (final NumberFormatException nfe) {
+			// the only way for a number format exception to occur is if one (or both) of
+			// the fields are null, so return null for the measure (meaning the measurement
+			// wasn't possible)
+			return null;
+		}
 	}
 
 	@Override
