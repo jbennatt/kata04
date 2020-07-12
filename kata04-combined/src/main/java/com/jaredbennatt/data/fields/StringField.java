@@ -1,6 +1,8 @@
-package com.jaredbennatt.data;
+package com.jaredbennatt.data.fields;
 
 import java.util.Scanner;
+
+import com.jaredbennatt.data.Field;
 
 public class StringField extends Field {
 	@Override

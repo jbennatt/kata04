@@ -23,8 +23,10 @@
 hs_err_pid*
 
 # eclipse
-.project
-.classpath
+*.project
+*.classpath
 *.launch
-.settings/
+*.settings/
 target/
+/.metadata/
+bin/

@@ -7,10 +7,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import com.jaredbennatt.data.DataParser;
-import com.jaredbennatt.data.DoubleField;
-import com.jaredbennatt.data.IntegerField;
 import com.jaredbennatt.data.Record;
-import com.jaredbennatt.data.StringField;
+import com.jaredbennatt.data.fields.DoubleField;
+import com.jaredbennatt.data.fields.IntegerField;
+import com.jaredbennatt.data.fields.StringField;
 
 public class WeatherDataParser extends DataParser {
 	// for this delimiter I'm taking out the asterisks up front

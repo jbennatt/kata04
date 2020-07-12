@@ -7,10 +7,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import com.jaredbennatt.data.DataParser;
-import com.jaredbennatt.data.DoubleField;
-import com.jaredbennatt.data.IntegerField;
 import com.jaredbennatt.data.Record;
-import com.jaredbennatt.data.StringField;
+import com.jaredbennatt.data.fields.DoubleField;
+import com.jaredbennatt.data.fields.IntegerField;
+import com.jaredbennatt.data.fields.StringField;
 
 public class FootballDataParser extends DataParser {
 	// delimiting pattern for parsing data, this will remove all white space,
