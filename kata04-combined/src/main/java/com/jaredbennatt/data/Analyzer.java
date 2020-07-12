@@ -42,9 +42,7 @@ public interface Analyzer<T> {
 	 */
 	public String printBestRecord(final Record record);
 
-	public static <T> void analyze(final InputStream input, final DataParser parser, final Analyzer<T> analyzer) {
-		final Table table = Table.readTable(input, parser);
-
+	public static <T> void analyze(final Table table, final Analyzer<T> analyzer) {
 		// keep list of best records
 		final List<Record> bestRecords = new LinkedList<>();
 		T bestMeasure = null;
@@ -69,6 +67,12 @@ public interface Analyzer<T> {
 		for (final Record record : bestRecords) {
 			System.out.println(analyzer.printBestRecord(record));
 		}
+	}
+
+	public static <T> void analyze(final InputStream input, final DataParser parser, final Analyzer<T> analyzer) {
+		final Table table = Table.readTable(input, parser);
+
+		Analyzer.analyze(table, analyzer);
 	}
 
 }
