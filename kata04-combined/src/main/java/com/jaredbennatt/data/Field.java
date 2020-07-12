@@ -58,7 +58,7 @@ public abstract class Field {
 	/**
 	 * This reads the scanner, from it's current location, determines if the next
 	 * token is valid for this field type, if so, it reads the next token into this
-	 * Datum value and advances the scanner to the next token. If the token is
+	 * field value and advances the scanner to the next token. If the token is
 	 * invalid, the internal value will remain null (indicating it was blank).
 	 * 
 	 * @param scanner Scanner object that is being used to read a line of data.
