@@ -6,6 +6,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public abstract class DataParser {
+	/**
+	 * The default delimiter is whitespace
+	 */
+	private static final Pattern DEFAULT_DELIMITER = Pattern.compile("\\s+");
 
 	protected DataParser() {
 		super();
@@ -48,7 +52,7 @@ public abstract class DataParser {
 	 * @return The Pattern object to be used for the scanner's delimiter
 	 */
 	protected Pattern getDelimiter() {
-		return Pattern.compile("\\s+");
+		return DEFAULT_DELIMITER;
 	}
 
 	/**
