@@ -20,14 +20,6 @@ public class Table implements Iterable<Record> {
 		return records.iterator();
 	}
 
-	public int size() {
-		return records.size();
-	}
-
-	public Record getRecord(final int i) {
-		return records.get(i);
-	}
-
 	public static Table readTable(final InputStream input, final DataParser parser) {
 		final Table table = new Table(parser.getPreferredTableSize());
 
